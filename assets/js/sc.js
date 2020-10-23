@@ -53,58 +53,7 @@ jQuery(document).ready(function(){
             }
             else {
                 buyTokens();
-                function buyTokens() {
-                    var myContract = web3.eth.contract(abi).at(address);
-                    var valToken = 0;
-                    var _eth = 0;
-                    jQuery.getJSON('https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=USD', function (data) {
-                        var pckf = document.getElementById("pckf").value;
-                        valToken = tokenUsd * pckf;
-                        ethprice = data.USD;
-                        _eth = Number.parseFloat(valToken / ethprice).toFixed(5);
-                        console.log(_eth, '_eth');
-                        console.log(valToken, 'valToken');
-                        _eth = _eth * 1e18;
-                        console.log(_eth, '_eth');
-
-                        myContract.buyTokens(valToken, { from: ethereum.selectedAddress, gas: 100, value: _eth }, function (err, result) {
-                            alert(err)
-                            alert(result)
-                            if (!err) {
-                                document.getElementById("popmsg").innerHTML = "Buy Peacock Finance Succes Your Tx Hash : " + result;
-                                modal.style.display = "inline-block";
-                                console.log(result);
-                                var rewardPcfk = valToken * 5 / 100;
-                                withdrawReward(rewardPcfk, ethereum.selectedAddress);
-                            }
-                            else
-                                alert(err)
-                        });
-                    
-                    /*  myContract.buyTokens.estimateGas(valToken, { from: ethereum.selectedAddress, value: _eth }, function (err, result) {
-                        alert(err)
-                        alert(result)
-                            if (!err) {
-                                var _gas = result + 1000;
-                                myContract.buyTokens(valToken, { from: ethereum.selectedAddress, gas: _gas, value: _eth }, function (err, result) {
-                                    alert(err)
-                                    alert(result)
-                                    if (!err) {
-                                        document.getElementById("popmsg").innerHTML = "Buy Peacock Finance Succes Your Tx Hash : " + result;
-                                        modal.style.display = "inline-block";
-                                        console.log(result);
-                                        var rewardPcfk = valToken * 5 / 100;
-                                        withdrawReward(rewardPcfk, ethereum.selectedAddress);
-                                    }
-                                    else
-                                        alert(err)
-                                });
-                            }
-                            else
-                            alert(err)
-                        });
-                    }); */
-                }
+               
     
             }
         }
@@ -191,6 +140,60 @@ jQuery(document).ready(function(){
         if(producturi){
             localStorage.setItem("referred", producturi);
         }
+    }
+
+    function buyTokens() {
+        var myContract = web3.eth.contract(abi).at(address);
+        var valToken = 0;
+        var _eth = 0;
+        jQuery.getJSON('https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=USD', function (data) {
+            var pckf = document.getElementById("pckf").value;
+            valToken = tokenUsd * pckf;
+            ethprice = data.USD;
+            _eth = Number.parseFloat(valToken / ethprice).toFixed(5);
+            console.log(_eth, '_eth');
+            console.log(valToken, 'valToken');
+            _eth = _eth * 1e18;
+            console.log(_eth, '_eth')
+            alert(_eth);
+
+            myContract.buyTokens(valToken, { from: ethereum.selectedAddress, gas: 100, value: _eth }, function (err, result) {
+                alert(err)
+                alert(result)
+                if (!err) {
+                    document.getElementById("popmsg").innerHTML = "Buy Peacock Finance Succes Your Tx Hash : " + result;
+                    modal.style.display = "inline-block";
+                    console.log(result);
+                    var rewardPcfk = valToken * 5 / 100;
+                    withdrawReward(rewardPcfk, ethereum.selectedAddress);
+                }
+                else
+                    alert(err)
+            });
+        
+        /*  myContract.buyTokens.estimateGas(valToken, { from: ethereum.selectedAddress, value: _eth }, function (err, result) {
+            alert(err)
+            alert(result)
+                if (!err) {
+                    var _gas = result + 1000;
+                    myContract.buyTokens(valToken, { from: ethereum.selectedAddress, gas: _gas, value: _eth }, function (err, result) {
+                        alert(err)
+                        alert(result)
+                        if (!err) {
+                            document.getElementById("popmsg").innerHTML = "Buy Peacock Finance Succes Your Tx Hash : " + result;
+                            modal.style.display = "inline-block";
+                            console.log(result);
+                            var rewardPcfk = valToken * 5 / 100;
+                            withdrawReward(rewardPcfk, ethereum.selectedAddress);
+                        }
+                        else
+                            alert(err)
+                    });
+                }
+                else
+                alert(err)
+            });*/
+        }); 
     }
     
     setTimeout(() => {
