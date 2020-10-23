@@ -6,6 +6,17 @@ jQuery(document).ready(function(){
     var ethprice;
     var tokenUsd = 0.6;
     var urlParams;
+    var ethereum = window.ethereum;
+    var web3 = window.web3;
+
+    function ethEnabled ()  {
+        console.log()
+        if (web3) {
+          ethereum.enable();
+          return true;
+        }
+        return false;
+      }
 
     if (typeof(web3) === 'undefined') {
         alert("Unable to find web3. Please run MetaMask or TrustWallet App (or something else that injects web3")
@@ -158,8 +169,9 @@ jQuery(document).ready(function(){
     }
     
     setTimeout(() => {
+       ethEnabled();
         viewSaldo();
-         ethereum.enable();
-    }, 400);
+    }, 200);
+       
 }
     });
