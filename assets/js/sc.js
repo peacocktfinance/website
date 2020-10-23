@@ -10,9 +10,6 @@ jQuery(document).ready(function(){
     jQuery.getJSON('assets/js/peacockfinance.json', function (data) {
         address = data.caddress;
         abi = data.cabi;
-        console.log(data.cabi)
-        console.log(data.caddress)
-    
     });
     
     jQuery("#buyshit").click(function(){
