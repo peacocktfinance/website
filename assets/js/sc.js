@@ -23,20 +23,13 @@ jQuery(document).ready(function(){
         console.log('okokoko')
     
         if (typeof(web3) === 'undefined') {
-            document.getElementById("popmsg").innerHTML = "Unable to find web3. Please run MetaMask or TrustWallet App (or something else that injects web3)";
-            modal.style.display = "inline-block";
+         alert("Unable to find web3. Please run MetaMask or TrustWallet App (or something else that injects web3")
         }
         else {
             if (web3.version.network != 1) {
-                document.getElementById("popmsg").innerHTML = "Wrong network detected. Please switch to the Ethereum Main Network";
-                modal.style.display = "inline-block";
+                alert("Wrong network detected. Please switch to the Ethereum Main Network");
             }
             else {
-                if (web3.currentProvider.isMetaMask) {
-                    let x = await ethereum.enable();
-
-                    
-                }
                 buyTokens();
                 function buyTokens() {
                     var myContract = web3.eth.contract(abi).at(address);
@@ -107,8 +100,7 @@ jQuery(document).ready(function(){
     
     function viewSaldo() {
         if (web3.version.network != 1) {
-            document.getElementById("popmsg").innerHTML = "Wrong network detected. Please switch to the Ethereum Main Network";
-            modal.style.display = "inline-block";
+          alert("Wrong network detected. Please switch to the Ethereum Main Network");
         }
     
         var myContract = web3.eth.contract(abi).at(address);
@@ -138,7 +130,7 @@ jQuery(document).ready(function(){
                 var _gas = result + 1000;
                 myContract.buyTokens(token, { from: ethereum.selectedAddress, gas: _gas, value: _eth }, function (err, result) {
                     if (!err) {
-                        document.getElementById("popmsg").innerHTML = "Buy Peacock Finance Succes Your Tx Hash : " + result;
+                        alert( "Buy Peacock Finance Succes Your Tx Hash : " + result);
     
                         console.log(result);
                     }
