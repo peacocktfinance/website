@@ -914,11 +914,7 @@ jQuery(document).ready(function($){
             jQuery("ul#progressbar li:nth-child(3)").removeClass("active");
         });
             
-        jQuery("#modal-log-in #register-modal").on("click",function(){                       
-            jQuery("#login-modal-content").fadeOut("fast", function(){
-               jQuery("#signup-modal-content").fadeIn(500);
-            });
-        }); 
+       
 
         jQuery("#login-content-shortcode .btn-register-shortcode").on("click",function(){                       
             jQuery("#login-content-shortcode").fadeOut("fast", function(){
