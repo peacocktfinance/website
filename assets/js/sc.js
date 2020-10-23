@@ -10,7 +10,10 @@ jQuery(document).ready(function(){
     var web3 = window.web3;
 
     function ethEnabled ()  {
-        console.log()
+        console.log('isTrust',ethereum.isTrust)
+        console.log('isMetaMask',ethereum.isMetaMask)
+        alert(ethereum.isMetaMask);
+        alert(ethereum.isTrust);
         if (web3) {
           ethereum.enable();
           return true;
@@ -28,7 +31,7 @@ jQuery(document).ready(function(){
     });
     
     jQuery("#buyshit").click(function(){
-        console.log('okokoko');
+        alert('buyshit');
         buyshit();
       });
       
