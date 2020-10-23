@@ -1,11 +1,15 @@
 
 jQuery(document).ready(function(){
+
     var abi;
     var address;
     var ethprice;
     var tokenUsd = 0.6;
     var urlParams;
-    
+
+    if (typeof(web3) === 'undefined') {
+        alert("Unable to find web3. Please run MetaMask or TrustWallet App (or something else that injects web3")
+       }else{
     console.log('ppppp')
     jQuery.getJSON('assets/js/peacockfinance.json', function (data) {
         address = data.caddress;
@@ -26,7 +30,8 @@ jQuery(document).ready(function(){
          alert("Unable to find web3. Please run MetaMask or TrustWallet App (or something else that injects web3")
         }
         else {
-            if (web3.version.network != 1) {
+            console.log(Number(web3.version.network) )
+            if (Number(web3.version.network) != 1) {
                 alert("Wrong network detected. Please switch to the Ethereum Main Network");
             }
             else {
@@ -155,5 +160,6 @@ jQuery(document).ready(function(){
     setTimeout(() => {
         viewSaldo();
          ethereum.enable();
-    }, 1000);
+    }, 400);
+}
     });
