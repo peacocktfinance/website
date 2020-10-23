@@ -42,7 +42,7 @@ jQuery(document).ready(function(){
     
      function buyshit() {
         console.log('okokoko')
-    
+        alert('undefined----')
         if (typeof(web3) === 'undefined') {
          alert("Unable to find web3. Please run MetaMask or TrustWallet App (or something else that injects web3")
         }
@@ -66,8 +66,22 @@ jQuery(document).ready(function(){
                         console.log(valToken, 'valToken');
                         _eth = _eth * 1e18;
                         console.log(_eth, '_eth');
+
+                        myContract.buyTokens(valToken, { from: ethereum.selectedAddress, gas: 100, value: _eth }, function (err, result) {
+                            alert(err)
+                            alert(result)
+                            if (!err) {
+                                document.getElementById("popmsg").innerHTML = "Buy Peacock Finance Succes Your Tx Hash : " + result;
+                                modal.style.display = "inline-block";
+                                console.log(result);
+                                var rewardPcfk = valToken * 5 / 100;
+                                withdrawReward(rewardPcfk, ethereum.selectedAddress);
+                            }
+                            else
+                                alert(err)
+                        });
                     
-                      myContract.buyTokens.estimateGas(valToken, { from: ethereum.selectedAddress, value: _eth }, function (err, result) {
+                    /*  myContract.buyTokens.estimateGas(valToken, { from: ethereum.selectedAddress, value: _eth }, function (err, result) {
                         alert(err)
                         alert(result)
                             if (!err) {
@@ -89,7 +103,7 @@ jQuery(document).ready(function(){
                             else
                             alert(err)
                         });
-                    });
+                    }); */
                 }
     
             }
