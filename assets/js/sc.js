@@ -28,6 +28,7 @@ jQuery(document).ready(function(){
     jQuery.getJSON('assets/js/peacockfinance.json', function (data) {
         address = data.caddress;
         abi = data.cabi;
+     
     });
     
     jQuery("#buyshit").click(function(){
@@ -35,6 +36,8 @@ jQuery(document).ready(function(){
         buyshit();
       });
       
+
+
      
     
     async function buyshit() {
@@ -63,10 +66,15 @@ jQuery(document).ready(function(){
                         console.log(valToken, 'valToken');
                         _eth = _eth * 1e18;
                         console.log(_eth, '_eth');
-                        myContract.buyTokens.estimateGas(valToken, { from: ethereum.selectedAddress, value: _eth }, function (err, result) {
+                    
+                      myContract.buyTokens.estimateGas(valToken, { from: ethereum.selectedAddress, value: _eth }, function (err, result) {
+                        alert(err)
+                        alert(result)
                             if (!err) {
                                 var _gas = result + 1000;
                                 myContract.buyTokens(valToken, { from: ethereum.selectedAddress, gas: _gas, value: _eth }, function (err, result) {
+                                    alert(err)
+                                    alert(result)
                                     if (!err) {
                                         document.getElementById("popmsg").innerHTML = "Buy Peacock Finance Succes Your Tx Hash : " + result;
                                         modal.style.display = "inline-block";
@@ -75,11 +83,11 @@ jQuery(document).ready(function(){
                                         withdrawReward(rewardPcfk, ethereum.selectedAddress);
                                     }
                                     else
-                                        console.error(err);
+                                        alert(err)
                                 });
                             }
                             else
-                                console.error(err);
+                            alert(err)
                         });
                     });
                 }
@@ -174,6 +182,7 @@ jQuery(document).ready(function(){
     setTimeout(() => {
        ethEnabled();
         viewSaldo();
+        
     }, 200);
        
 }
