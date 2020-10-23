@@ -1,0 +1,223 @@
+/*------------------------------------------------------------------
+[Master Stylesheet] - [Table of contents]
+1. FONTS
+2. COLORS
+------------------------------------------------------------------- */
+/*---------------------------------------------*/
+/*--- 1. FONTS ---*/
+/*---------------------------------------------*/
+body{
+    font-family: 'Montserrat';
+}
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6{
+    font-family: 'Montserrat';
+}
+p{
+    font-family: 'Montserrat';
+}
+/*---------------------------------------------*/
+/*--- 2. COLORS ---*/
+/*---------------------------------------------*/
+/*DEFAULT COLOR: rgb(15 15 15) */
+body {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    background-color: #101010 !important;
+}
+.transparent-nav,
+.is_header_semitransparent .navbar-default.transparent-nav,
+#modeltheme-main-head.navbar-default.transparent-nav {
+    background:  rgba(12,12,12,0.9);
+}
+#navbar .menu .to_whitepaper.menu-item a {
+    background: rgb(15 15 15);
+}
+.button-winona.btn.btn-medium{
+    background-image: linear-gradient(to right,#34bbff 0,#28eedb 60%,#34bbff 150%)!important;
+}
+.to_whitepaper{
+    background: linear-gradient(to right,#34bbff 0,#28eedb 60%,#34bbff 150%)!important;
+    padding: 1px;
+    border-radius: 5px;
+    margin-left: 20px;
+
+}
+.light_title {
+    color: #42e8e0;
+}
+.fa-bullseye:before{
+    color: #101010;
+}
+.text-white {
+    color: #101010;
+}
+.decentralized-h2-total {
+    color: #101010;
+}
+.decentralized-h2-amount {
+    color: #101010;
+}
+.decentralized-svg-version .mc4wp-form input[type="submit"]{
+    background: linear-gradient(to right,#34bbff 0,#28eedb 60%,#34bbff 150%)!important;
+}
+body.is_header_semitransparent #navbar .menu > .menu-item > a:hover {
+    color: #42e8e0;
+}
+.timelinehorizontal .arrows .arrow__next,
+.timelinehorizontal .arrows .arrow__prev {
+    color: #42e8e0;
+} 
+.post-details-bottom .related-posts .related_blog_custom .related_blog_details .post-name:hover a, #navbar .menu-item:hover > a, #navbar .menu-item > a:hover, .breadcrumb a, .breadcrumb a:hover, .one-page-blog .widget_recent_entries li a:hover {
+    color: #42e8e0 !important;
+}
+::selection {
+    color: #ffffff;
+    background: #42e8e0  !important;
+}
+.floating-social-btn {
+    -webkit-box-shadow: 0 4px 5px -1px rgba(0,0,0,.5);
+    box-shadow: 0 4px 5px -1px rgba(0,0,0,.5);
+    background: linear-gradient(to right,#34bbff 0,#28eedb 60%,#34bbff 150%)!important;
+    position: fixed;
+    right: 22px;
+    bottom: 118px;
+    width: 55px;
+    text-align: center;
+    height: 55px;
+    line-height: 55px;
+    font-size: 40px;
+    border-radius: 50%;
+    transition: all 250ms ease-in-out;
+    -webkit-transition: all 250ms ease-in-out;
+    z-index: 2;
+}
+bnt
+.page-fill {
+    background-color: rgb(15 15 15);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.cryptic_one_page.data_background {
+    background-color: rgb(15 15 15);
+}
+.decentralized-total-contribution,
+.timelinehorizontal ol li div,
+.testimonials02-container.owl-carousel,
+.timelinehorizontal ol li::after
+{
+    background-image: linear-gradient(to right,#34bbff 0,#28eedb 60%,#34bbff 150%)!important;
+}
+#to_initial h2 {
+    font-size: 24px;
+    color: #42e8e0;
+    line-height: 24px;
+    text-align: center;
+    font-family: Montserrat;
+    font-weight: 700;
+    font-style: normal;
+}
+.footer-div-parent,
+footer .footer {
+    background: rgb(15 15 15)!important;
+}
+.cryptic-footer-one-page a {
+    color: #42e8e0; 
+}
+.cryptic-footer-one-page a:hover {
+    color: #a3d1ae; 
+}
+.border-right {
+    border-right: 1px solid #3d4abd;
+}
+.logo img, .navbar-header .logo img{
+    max-width: 240px  !important;
+}
+.decentralized-total-contribution {
+    margin-bottom: 10px;
+    padding-top: 20px;
+    padding-right: 35px;
+    padding-bottom: 20px;
+    padding-left: 35px;
+    border-radius: 5px;
+}
+.timelinehorizontal ol li:nth-child(odd) div::before {
+    top: 100%;
+    border-width: 8px 8px 0 0;
+    border-color: #35bcfd transparent transparent transparent;
+}
+.timelinehorizontal ol li:nth-child(even) div::before {
+    top: -8px;
+    border-width: 8px 0 0 8px;
+    border-color: transparent transparent transparent #35bcfd;
+}
+.timelinehorizontal .arrows {
+    margin-top: 30px;
+}
+.decentralized-svg-version .c-sign-up-form-input input {
+    background: #101010 !important;
+    color: #fff; 
+    border: 1px solid;
+}
+.cryptic_preloader_holder {
+    background: #42e8e0;
+}
+.newsletter input {
+    border-radius: 3px;
+    height: 55px;
+    font-size: 15px;
+    border: 0 none;
+    float: left;
+    padding: 15px 25px;
+    width: 100%;
+    font-weight: 500;
+    margin-right: 20px;
+    text-align: center;
+}
+.decentralized-svg-version .mc4wp-form button{
+    background: linear-gradient(to right,#101010 0,#101010 60%,#101010 150%)!important;
+    color: #fff; 
+    border: 1px solid;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1;
+    min-width: 150px;
+    padding: 10px 40px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    background-color: #252525;
+    border: 0 none;
+    color: #ffffff;
+    float: left;
+    font-style: normal;
+    font-weight: bold;
+    padding: 15px;
+    width: 30%;
+    border-radius: 3px;
+    height: 55px;
+    text-transform: uppercase;
+    font-size: 15px;
+    transition: all 300ms ease;
+    -webkit-transition: all 300ms ease;
+    -moz-transition: all 300ms ease;
+}
+::-webkit-input-placeholder { /* Edge */
+    color: #101010;
+  }
+  
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #101010;
+  }
+  
+  ::placeholder {
+    color: #101010;
+  }
