@@ -40,7 +40,7 @@ jQuery(document).ready(function(){
 
      
     
-    async function buyshit() {
+     function buyshit() {
         console.log('okokoko')
     
         if (typeof(web3) === 'undefined') {
