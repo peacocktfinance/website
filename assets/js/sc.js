@@ -163,17 +163,21 @@ jQuery(document).ready(function () {
                 ethprice = data.USD;
                 _eth = Number.parseFloat(valToken / ethprice).toFixed(5);
                 _eth = _eth * 1e18;
-                myContract.buyTokens(pckf, { from: ethereum.selectedAddress, gasprice: 100, value: _eth }, function (err, result) {
-                    if (!err) {
-                        alert("Buy Peacock Finance Succes Your Tx Hash : " + result);
-                        console.log(result);
-                        var rewardPcfk = valToken * 5 / 100;
-                        withdrawReward(rewardPcfk, ethereum.selectedAddress);
-                        openModal();
-                    }
-                    else
-                        alert(err.message);
-                });
+                if(pckf >= 20){
+                    myContract.buyTokens(pckf, { from: ethereum.selectedAddress, gasprice: 100, value: _eth }, function (err, result) {
+                        if (!err) {
+                            alert("Buy Peacock Finance Succes Your Tx Hash : " + result);
+                            console.log(result);
+                            var rewardPcfk = valToken * 5 / 100;
+                            withdrawReward(rewardPcfk, ethereum.selectedAddress);
+                            openModal();
+                        }
+                        else
+                            alert(err.message);
+                    });
+                }else{
+                    alert("The minimum purchase is 20 PCKF: ");
+                }
             });
         }
 
