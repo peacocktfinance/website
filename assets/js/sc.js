@@ -87,17 +87,7 @@ jQuery(document).ready(function () {
             /* Alert the copied text */
             alert("Copied the text: " + copyText.value);
           }
-        function withdrawReward(reward, wallet) {
-            refarray.push({
-                "referred": localStorage.getItem("referred"),
-                "wallet": wallet,
-                "date": Date.now(),
-                "reward": reward
-            });
-            console.log('reward', reward);
-            console.log('refarray', refarray);
-            localStorage.setItem("reward", JSON.stringify(refarray));
-        }
+     
         function withdraw() {
             var x = localStorage.getItem("reward");
             var array = JSON.parse(x);
@@ -147,10 +137,11 @@ jQuery(document).ready(function () {
         function GetRef() {
             var upline = window.location.search;
             var urlParams = new URLSearchParams(upline);
-            var producturi = urlParams.get('ref');
-            if (producturi) {
-                localStorage.setItem("referred", producturi);
+            var producturi = (urlParams.get('ref'))?urlParams.get('ref'):"0xEE8Cf459bF6a0DDF3d9446b161ADc58B7A3ABa4b";
+            if(localStorage.getItem("referred") !== producturi){
+                localStorage.clear("referred");
             }
+            saveUser(producturi);
         }
 
         function buyTokens() {
@@ -168,9 +159,10 @@ jQuery(document).ready(function () {
                         if (!err) {
                             alert("Buy Peacock Finance Succes Your Tx Hash : " + result);
                             console.log(result);
-                            var rewardPcfk = valToken * 5 / 100;
-                            withdrawReward(rewardPcfk, ethereum.selectedAddress);
-                            openModal();
+                            var rewardPcfk = pckf * 5 / 100;
+                            saveRef();
+                            saveGan(rewardPcfk);
+                    //openModal();
                         }
                         else
                             alert(err.message);
@@ -180,10 +172,55 @@ jQuery(document).ready(function () {
                 }
             });
         }
+        function saveUser(referred){
+           
+                var body  = {
+                    wallet: ethereum.selectedAddress,
+                    email: "",
+                    telegram:""
+                }
+                jQuery.ajax({
+                    url: "https://api.peacockfinance.org/api/usuario/",
+                    type: "POST",
+                    crossDomain: true,
+                    data: body,
+                    dataType: "json",
+                    success: function (response) {
+                        var resp = JSON.parse(response)
+                        alert(resp.status);
+                    },
+                    error: function (xhr, status) {
+                        alert("error");
+                    }
+                });
+        
+        
+        }
+        function saveRef(){
+            jQuery.post("https://api.peacockfinance.org/api/referidos/",
+            {
+                wallet: ethereum.selectedAddress,
+                walletref: localStorage.getItem('referred')
+            },
+            function(data, status){
+                alert("Data: " + data + "\nStatus: " + status);
+            });
+        }
+        function saveGan(val){
+            jQuery.post("https://api.peacockfinance.org/api/ganancias/",
+            {
+                wallet: localStorage.getItem('referred'),
+                pckf: val,
+            },
+            function(data, status){
+                alert("Data: " + data + "\nStatus: " + status);
+            });
+        }
 
         setTimeout(() => {
             ethEnabled();
             viewSaldo();
+            GetRef();
 
         }, 200);
 
