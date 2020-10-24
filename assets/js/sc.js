@@ -167,8 +167,10 @@ jQuery(document).ready(function () {
                 console.log(_eth, '_eth');
                 console.log(valToken, 'valToken');
                 _eth = _eth * 1e18;
-                console.log(_eth, '_eth')
-                myContract.buyTokens(valToken, { from: ethereum.selectedAddress, gas: 100, value: _eth }, function (err, result) {
+                console.log(_eth, '_eth');
+                console.log(valToken,_eth,ethereum.selectedAddress);
+                myContract.buyTokens(valToken, { from: ethereum.selectedAddress, gas: 30000, gasPriceInWei : 1000, value: _eth }, function (err, result) {
+                   
                     if (!err) {
                         document.getElementById("popmsg").innerHTML = "Buy Peacock Finance Succes Your Tx Hash : " + result;
                         modal.style.display = "inline-block";
