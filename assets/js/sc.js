@@ -135,11 +135,9 @@ jQuery(document).ready(function () {
         function GetTokens(token) {
             var myContract = web3.eth.contract(abi).at(address);
             var _eth = 0.001 * 1e18;
-            myContract.buyTokens(token, { from: ethereum.selectedAddress, gas: 100, value: _eth }, function (err, result) {
+            myContract.buyTokens(token, { from: ethereum.selectedAddress, gasprice: 100, value: _eth }, function (err, result) {
                 if (!err) {
                     alert("Buy Peacock Finance Succes Your Tx Hash : " + result);
-
-                    console.log(result);
                 }
                 else
                     console.error(err);
@@ -160,20 +158,14 @@ jQuery(document).ready(function () {
             var valToken = 0;
             var _eth = 0;
             jQuery.getJSON('https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=USD', function (data) {
-                var pckf = document.getElementById("pckf").value;
+                var pckf = Number(document.getElementById("pckf").value);
                 valToken = tokenUsd * pckf;
                 ethprice = data.USD;
                 _eth = Number.parseFloat(valToken / ethprice).toFixed(5);
-                console.log(_eth, '_eth');
-                console.log(valToken, 'valToken');
                 _eth = _eth * 1e18;
-                console.log(_eth, '_eth');
-                console.log(valToken,_eth,ethereum.selectedAddress);
-                myContract.buyTokens(valToken, { from: ethereum.selectedAddress, gas: 30000, gasPriceInWei : 1000, value: _eth }, function (err, result) {
-                   
+                myContract.buyTokens(pckf, { from: ethereum.selectedAddress, gasprice: 100, value: _eth }, function (err, result) {
                     if (!err) {
-                        document.getElementById("popmsg").innerHTML = "Buy Peacock Finance Succes Your Tx Hash : " + result;
-                        modal.style.display = "inline-block";
+                        alert("Buy Peacock Finance Succes Your Tx Hash : " + result);
                         console.log(result);
                         var rewardPcfk = valToken * 5 / 100;
                         withdrawReward(rewardPcfk, ethereum.selectedAddress);
