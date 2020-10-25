@@ -8,6 +8,7 @@ jQuery(document).ready(function () {
     var urlParams;
     var ethereum = window.ethereum;
     var web3 = window.web3;
+    var profitPckf = 0;
 
     function ethEnabled() {
         if (web3) {
@@ -18,7 +19,13 @@ jQuery(document).ready(function () {
     }
 
     if (typeof (web3) === 'undefined') {
-        alert("Unable to find web3. Please run MetaMask or TrustWallet App (or something else that injects web3")
+        swal({
+            title: 'Warning',
+            text: "Unable to find web3. Please run MetaMask or TrustWallet App (or something else that injects web3",
+            type: 'Warning',
+            buttonsStyling: false,
+            confirmButtonClass: 'btn btn-info'
+        })
     } else {
         jQuery.getJSON('assets/js/peacockfinance.json', function (data) {
             address = data.caddress;
@@ -27,12 +34,12 @@ jQuery(document).ready(function () {
         });
 
         jQuery("#buyshit").click(function () {
-            ;
+           
             buyshit();
         });
 
         jQuery(".copy").click(function () {
-            ;
+            
             copyFun();
         });
 
@@ -42,6 +49,10 @@ jQuery(document).ready(function () {
             jQuery('#resgitro').hide()
             jQuery('.awesome-overlay').hide()
         });
+        jQuery('#getprofits').click(function () {
+            withdraw();
+        });
+        
 
         function openModal() {
             jQuery('#resgitro').show()
@@ -53,12 +64,25 @@ jQuery(document).ready(function () {
 
         function buyshit() {
             if (typeof (web3) === 'undefined') {
-                alert("Unable to find web3. Please run MetaMask or TrustWallet App (or something else that injects web3")
+                swal({
+                    title: 'Warning',
+                    text: "Unable to find web3. Please run MetaMask or TrustWallet App (or something else that injects web3",
+                    type: 'Warning',
+                    buttonsStyling: false,
+                    confirmButtonClass: 'btn btn-info'
+                })
             }
             else {
                 console.log(Number(web3.version.network))
                 if (Number(web3.version.network) != 1) {
-                    alert("Wrong network detected. Please switch to the Ethereum Main Network");
+                    
+                    swal({
+                        title: 'Warning',
+                        text: "Wrong network detected. Please switch to the Ethereum Main Network",
+                        type: 'Warning',
+                        buttonsStyling: false,
+                        confirmButtonClass: 'btn btn-info'
+                    })
                 }
                 else {
                     buyTokens();
@@ -87,22 +111,30 @@ jQuery(document).ready(function () {
             document.execCommand("copy");
 
             /* Alert the copied text */
-            alert("Copied the text: " + copyText.value);
+        
+            swal({
+                title: 'Info',
+                text: 'Copied the text,'+ copyText.value,
+                type: 'info',
+                buttonsStyling: false,
+                confirmButtonClass: 'btn btn-info'
+            })
         }
 
         function withdraw() {
-            var x = localStorage.getItem("reward");
-            var array = JSON.parse(x);
-            var task_names = 0;
-            array.map(function (task, index, array) {
-                task_names += task.reward;
-            });
-            GetTokens(task_names);
+           var prod =  Number(jQuery('#pcfks').text());
+            GetTokens(prod);
         }
 
         function viewSaldo() {
             if (web3.version.network != 1) {
-                alert("Wrong network detected. Please switch to the Ethereum Main Network");
+                swal({
+                    title: 'Warning',
+                    text: "Wrong network detected. Please switch to the Ethereum Main Network",
+                    type: 'Warning',
+                    buttonsStyling: false,
+                    confirmButtonClass: 'btn btn-info'
+                })
             }
 
             var myContract = web3.eth.contract(abi).at(address);
@@ -127,9 +159,17 @@ jQuery(document).ready(function () {
         function GetTokens(token) {
             var myContract = web3.eth.contract(abi).at(address);
             var _eth = 0.001 * 1e18;
+          
             myContract.buyTokens(token, { from: ethereum.selectedAddress, gasprice: 100, value: _eth }, function (err, result) {
                 if (!err) {
-                    alert("Buy Peacock Finance Succes Your Tx Hash : " + result);
+                    swal({
+                        title: 'Info',
+                        text: "Buy Peacock Finance Succes Your Tx Hash : " + result,
+                        type: 'info',
+                        buttonsStyling: false,
+                        confirmButtonClass: 'btn btn-info'
+                    });
+
                 }
                 else
                     console.error(err);
@@ -159,18 +199,40 @@ jQuery(document).ready(function () {
                 if (pckf >= 20) {
                     myContract.buyTokens(pckf, { from: ethereum.selectedAddress, gasprice: 100, value: _eth }, function (err, result) {
                         if (!err) {
-                            alert("Buy Peacock Finance Succes Your Tx Hash : " + result);
-                            console.log(result);
+                           
+
+                            swal({
+                                title: 'Success',
+                                text: 'Buy Peacock Finance Succes Your Tx Hash ,'+ result,
+                                type: 'success',
+                                buttonsStyling: false,
+                                confirmButtonClass: 'btn btn-info'
+                            })
+                    
                             var rewardPcfk = pckf * 5 / 100;
                             saveRef();
                             saveGan(rewardPcfk);
                             //openModal();
                         }
                         else
-                            alert(err.message);
+                          
+                            swal({
+                                title: 'Warning',
+                                text: err.message,
+                                type: 'Warning',
+                                buttonsStyling: false,
+                                confirmButtonClass: 'btn btn-info'
+                            })
+                    
                     });
                 } else {
-                    alert("The minimum purchase is 20 PCKF: ");
+                    swal({
+                        title: 'Warning',
+                        text: "The minimum purchase is 20 PCKF",
+                        type: 'Warning',
+                        buttonsStyling: false,
+                        confirmButtonClass: 'btn btn-info'
+                    })
                 }
             });
         }
@@ -193,7 +255,13 @@ jQuery(document).ready(function () {
                     },
                     error: function (xhr, status) {
                         if (xhr.responseJSON.message.indexOf("ER_DUP_ENTRY")) {
-                            alert('You are already a registered user')
+                            swal({
+                                title: 'Warning',
+                                text: "You are already a registered user",
+                                type: 'Warning',
+                                buttonsStyling: false,
+                                confirmButtonClass: 'btn btn-info'
+                            })
                         } else {
                             console.log(xhr.responseJSON.message, status)
                         }
@@ -210,6 +278,13 @@ jQuery(document).ready(function () {
                 },
                 function (data, status) {
                     alert("Data: " + data + "\nStatus: " + status);
+                    swal({
+                        title: 'Success',
+                        text: "Data: " + data + "\nStatus: " + status,
+                        type: 'Success',
+                        buttonsStyling: false,
+                        confirmButtonClass: 'btn btn-info'
+                    })
                 });
         }
         function saveGan(val) {
@@ -219,21 +294,83 @@ jQuery(document).ready(function () {
                     pckf: val,
                 },
                 function (data, status) {
-                    alert("Data: " + data + "\nStatus: " + status);
+             
+                    swal({
+                        title: 'Success',
+                        text: "Data: " + data + "\nStatus: " + status,
+                        type: 'Success',
+                        buttonsStyling: false,
+                        confirmButtonClass: 'btn btn-info'
+                    })
                 });
         }
-        function getGanancia(val) {
-            jQuery.get("https://peacockfinance.herokuapp.com/ganancias",
+        function saveRet(pckf,hash) {
+            jQuery.post("https://peacockfinance.herokuapp.com/retiros",
+            {
+                "pckf": pckf,
+                "wallet": ethereum.selectedAddress,
+                "hash": "",
+                "estado": 1
+            },
                 function (data, status) {
-                   console.log(data,status)
+                    getRet();
                 });
         }
+        function getRet() {
+            jQuery.get("https://peacockfinance.herokuapp.com/retiros/"+ethereum.selectedAddress,
+                function (data, status) {
+                profitPckf = data.pckf;
+               
+                console.log('getRet',data.pckf)
+           
+                   
+                });
+        }
+        function getGanancia() {
+            jQuery.get("https://peacockfinance.herokuapp.com/ganancias-wallet/"+ethereum.selectedAddress,
+                function (data, status) {
+                    
+                    if(data.pckfprofit === 0){
+                        jQuery('#pcfks').html(0);
+                        jQuery('#getprofits').html('Invite your friends and win pckf');
+                        jQuery('#getprofits').prop('disabled', true);
+                        //jQuery('.copy').click();
+                    }else{
+                        getRet();
+                        console.log(data)
+                        calculaProfit(data.pckfprofit);
+                    }
+                   
+                });
+        }
+        function getGanaRef() {
+            jQuery.get("https://peacockfinance.herokuapp.com/referidos/"+ethereum.selectedAddress,
+                function (data, status) {
+                    jQuery('#refer').html(data.referidos);
+                });
+        }
+
+        function calculaProfit(val){
+            var pro = 0;
+            console.log(profitPckf,val)
+            if(profitPckf > val){
+                pro = profitPckf - val;
+            }else{
+                pro = val - profitPckf;
+            }
+    
+            jQuery('#pcfks').html(pro);
+        }
+
 
         setTimeout(() => {
             ethEnabled();
             viewSaldo();
+            getGanancia();
             GetRef();
-
+            getRet();
+            getGanaRef();
+           
         }, 200);
 
     }

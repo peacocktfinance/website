@@ -22,6 +22,10 @@
 	<link rel='stylesheet' type='text/css' media='all' href='assets/plugins/select2/select2.min.css' />
 
     <link rel="stylesheet" type="text/css" media="all" href="assets/plugins/amcharts/export.css" />
+
+    <link rel="stylesheet" type="text/css" media="all" href="assets/css/sweetalert.css" />
+    <script src='assets/js/sweetalert.js'></script>
+
     <!-- Fonts -->
 	<link rel='stylesheet' type='text/css' media='all' href='https://fonts.googleapis.com/css?family=Open+Sans%3A300%2C400%2C600%2C700%2C800%7CRaleway%3A100%2C200%2C300%2C400%2C500%2C600%2C700%2C800%2C900%7CDroid+Serif%3A400%2C700%7CMontserrat%7CMontserrat%3Aregular%2C700%2Clatin'/>
     <script src='assets/js/jquery.js'></script>
@@ -55,7 +59,6 @@
     	<div class="cryptic_preloader v2_ball_pulse">
             <div class="loaders">
                 <div class="loader">
-                    <img src="assets/images/logo.svg" alt="Peacock Finance" width="240px" />
                     <div class="loader-inner ball-pulse">
                         <div></div>
                         <div></div>
@@ -213,8 +216,8 @@
                                     text-align: center;
                                 ">
                                         <h2 class="decentralized-h2-total wow fadeIn" style="    text-align: center;">My rewards:</h2>
-                                        <h2 class="decentralized-h2-amount wow fadeIn" style="    text-align: center;">0 PCKF</h2>
-                                        <button type="button" class="btn" style="
+                                        <h2 class="decentralized-h2-amount wow fadeIn" style="    text-align: center;"><span id="pcfks"></span> PCKF</h2>
+                                        <button type="button" class="btn" id="getprofits" style="
                                         width: 350px;
                                         border-radius: 4px;
                                         background: #111111;
@@ -224,7 +227,7 @@
                                <br>
                                       <span class="name" style="
                                       display: block;
-                                  ">Referrals:  1</span>
+                                  ">Referrals:  <strong id="refer">0</strong></span>
                                     </div>
                            
                                 
@@ -388,7 +391,7 @@
                                             <div class="clearfix"></div>
                                             <div class="section-border green_border no-margin"></div>
                                             <div class="spacer_10"></div>
-                                            <div class="section-subtitle light_subtitle">Duis aute irure dolor in reprehenderit in voluptate velit esse <br /> cillum dolore eu fugiat nulla pariatur.</div>
+                                            <div class="section-subtitle light_subtitle">This road map is designed to trace the initial route of the project once we conclude the first part of our project we will be updating.</div>
                                         </div>
                                     </div>
                                 </div>
@@ -414,79 +417,93 @@
                                     <li>
                                         <div>
                                             <p class="time text-left">Nov 14, 2020</p>
-                                            <h3 class="text-left">Close &amp; Pre sale 1</h3>
-                                            <p class="text-left">Close First round of presale ends (PCFK)</p>
-                                        </div>
+                                            <h3 class="text-left">Close Pre sale 1</h3>
+                                            <p class="text-left">Close First round of presale ends 0.6 USD (PCFK)</p>
+                                        </div> 
                                     </li>
                                     <li>
-                                        <div><p class="time text-left">Nov 20, 2020</p>
+                                        <div><p class="time text-left">Nov 15, 2020</p>
                                             <h3 class="text-left">Pre sale 2</h3>
-                                            <p class="text-left">Finish the second round for sale (PCFK)</p>
+                                            <p class="text-left">Finish the second round for sale 1.5 USD (PCFK)</p>
                                         </div>
                                     </li>
                                     <li>
                                         <div>
-                                            <p class="time text-left">Nov 14, 2020</p>
-                                            <h3 class="text-left">Close &amp; Pre sale 2</h3>
+                                            <p class="time text-left">Nov 28, 2020</p>
+                                            <h3 class="text-left">Close  Pre sale 2</h3>
                                             <p class="text-left">Close second round of presale ends (PCFK)</p>
                                         </div>
                                     </li>
                                    
                                     <li>
-                                        <div><p class="time text-left">Nov 21, 2020</p>
+                                        <div><p class="time text-left">Nov 29 , 2020</p>
                                             <h3 class="text-left">Pre sale 3</h3>
+                                            <p class="text-left">Finish  pre sale 4 USD (PCFK)</p>
+                                        </div>
+                                    </li>
+
+                                    <li>
+                                        <div><p class="time text-left">Dec 8 , 2020</p>
+                                            <h3 class="text-left">Close Pre sale 3</h3>
                                             <p class="text-left">Finish  pre sale (PCFK)</p>
                                         </div>
                                     </li>
                                    
                                     <li>
-                                        <div><p class="time text-left">Dec 3, 2020</p>
+                                        <div><p class="time text-left">Dec 10, 2020</p>
                                             <h3 class="text-left">PCFK Staking</h3>
-                                            <p class="text-left">Smart contract is launched to stake and generate profits
+                                            <p class="text-left">Smart contract is launched to stake and generate profits Daily 0.1% year  36.5% 
                                             </p>
                                         </div>
                                     </li>
                                     <li>
-                                        <div><p class="time text-left">Dec 8, 2020</p>
+                                        <div><p class="time text-left">Dec 18, 2020</p>
                                             <h3 class="text-left"> Exchange deployment ERC20</h3> 
                                             <p class="text-left">The first version of our own exchange goes into production together with unswap and Marketcap</p>
                                         </div>
                                     </li>
                                     <li>
-                                        <div><p class="time text-left">Dec 21, 2020</p>
+                                        <div><p class="time text-left">Dec 24, 2020</p>
                                             <h3 class="text-left">Token (TRX),(BNB)</h3>
                                             <p class="text-left">First token development in different ecosystems</p>
                                         </div>
                                     </li>
                                     <li>
-                                        <div><p class="time text-left">Dec 22, 2020</p>
+                                        <div><p class="time text-left">Dec 30, 2020</p>
                                             <h3 class="text-left">Listed on Exchange</h3>
                                             <p class="text-left">It is listed in different centralized and decentralized exchanges</p>
                                         </div>
                                     </li>
                                    
                                     <li>
-                                        <div><p class="time text-left">Jan 7, 2020</p>
+                                        <div><p class="time text-left">Jan 8, 2021</p>
                                             <h3 class="text-left">Construction Companies</h3>
                                             <p class="text-left">First pilot with the construction companies</p>
                                         </div>
                                     </li>
                                     <li>
-                                        <div><p class="time text-left">Feb 13, 2020</p>
+                                        <div><p class="time text-left">Feb 13, 2021</p>
                                             <h3 class="text-left">Development platform</h3>
                                             <p class="text-left">Development of a platform for investment in construction</p>
                                         </div>
                                     </li>
                                     <li>
-                                        <div><p class="time text-left">June 1, 2020</p>
+                                        <div><p class="time text-left">Mar 1, 2021</p>
                                             <h3 class="text-left">Banking</h3>
                                             <p class="text-left">Smart contract based management of assets with enhanced security and new investment opportunities</p>
                                         </div>
                                     </li>
                                     <li>
-                                        <div><p class="time text-left">Sep 21, 2020</p>
+                                        <div><p class="time text-left">Apr 21, 2021</p>
                                             <h3 class="text-left">Payment Service</h3>
                                             <p class="text-left">Smart contract is launched to stake and generate profits
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div><p class="time text-left">May 21, 2021</p>
+                                            <h3 class="text-left">Blockchain</h3>
+                                            <p class="text-left">Start blockchain development
                                             </p>
                                         </div>
                                     </li>
@@ -547,7 +564,7 @@
                                                         </div>
                                                         <div class="clients_image_holder post">
                                                             <div class="item col-md-12">
-                                                                <div class="clients_image_holder_inside post no-margin"><img class="client_image" src="https://vindax.com/assets/images/Logo-01.svg" alt="vindax" /></div>
+                                                                <div class="clients_image_holder_inside post no-margin"><img class="client_image" src="/assets/images/Logo-vidax.svg" alt="vindax" /></div>
                                                             </div>
                                                         </div>
                                                        
@@ -560,6 +577,7 @@
                                 </div>
                             </div>
                         </div>
+                        
                         <!-- Section8 BitWallet - Know Your Customer -->
                         <div class="clearfix"></div>
                         <div class="padding_top-80 text_center page-fill">
@@ -604,12 +622,6 @@
 			</div>
 		</div>
 
-	    <!-- BEGIN: FLOATING SOCIAL BUTTON -->
-	    <a data-toggle="tooltip" data-placement="top" title="Connect on Telegram" class="floating-social-btn" target="_blank" href="https://t.me/peacock_finance">
-	    	<i class="fa fa-telegram"></i>
-        </a>  
-          
-      
           
 	    <!-- END: FLOATING SOCIAL BUTTON -->
 
@@ -676,7 +688,7 @@
      <!-- Modal -->
 
   <!-- /Modal -->
-
+  
 <script src='assets/js/bitwallet-plugins.js'></script>
 <script src='assets/js/bitwallet-custom.js'></script>
 <script src='assets/js/jquery.mb.YTPlayer.min.js'></script>
