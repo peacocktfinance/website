@@ -30662,3 +30662,100 @@ section#cd-timeline.timeline_right .cd-timeline-content::before {
 ul#webticker-dark-icons li i {
   font-size: 14px;
 }
+.border-right {
+    border-right: 1px solid #2edde6 !important;
+}
+footer {
+    background: #111111;
+}
+.single article .article-content p, p, .post-excerpt {
+    font-family: Montserrat;
+    line-height: 25px;
+    color: #111111;
+    font-size: 15px;
+}
+@media screen and (max-width: 600px) {
+    .decentralized-svg-version .c-sign-up-form-input{
+        width: 100%;
+    }
+    .decentralized-svg-version .c-sign-up-form-input input{
+        width: 100%;
+        margin-right:0px;
+
+        margin-bottom: 10px;
+    }
+    .decentralized-svg-version .mc4wp-form button{
+        width: 100%;
+    }
+    #buyshit{
+        width: 100%;
+        margin-top: 8px; 
+    }
+    #getprofits{
+        width: 100%  !important;
+    }
+    .decentralized-h2-amount{
+        padding-bottom: 10px;
+    }
+    .single article .article-content p, p, .post-excerpt{
+        color: #111111;
+    }
+    .text_left .section-subtitle{
+        width: 100%;
+    }
+    .timelinehorizontal ol li:nth-child(even) div::before{
+        display: none;
+    }
+    .copy{
+        width: 100% !important;
+        margin-top: 10px !important;
+    }
+    .is_header_semitransparent .navbar-default {
+        background: #101010 !important;
+    }
+    .padding_80 {
+        padding-top: 20px !important;
+        padding-bottom: 20px !important;
+    }
+    .padding_top-80 {
+        padding-top: 19px !important;
+    }
+    .to_whitepaper{
+      margin-left: 20px;
+    }
+    #to_products .title-subtile-holder, .button-winona.btn.btn-medium.btn_custom_blue_grad {
+        margin-left: 0;
+    }
+    .button-winona.btn.btn-medium{
+        margin-left: 0;
+        width: 100%;
+        margin-top: 10px;
+    }
+    #to_initial h1{
+        font-size: 34px !important;
+        color: #ffffff;
+        line-height: 35px !important;
+        text-align: center;
+        font-family: Montserrat;
+        font-weight: 700;
+        font-style: normal;
+    }
+    #to_initial h3 {
+        font-size: 14px  !important;
+        color: #ffffff;
+        line-height: 19px  !important;
+        text-align: center;
+        font-family: Montserrat;
+        font-weight: 400;
+        font-style: normal;
+    }
+    .spacer_80 {
+        height: 10px;
+        width: 100%;
+        float: left;
+        clear: both;
+    }
+    .data_background{
+        background-position-y: 90px !important;
+    }
+  }

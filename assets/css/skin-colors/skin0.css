@@ -29,7 +29,7 @@ body {
     font-size: 14px;
     line-height: 1.42857143;
     color: #333;
-    background-color: #101010 !important;
+    background-color: #101010;
 }
 .transparent-nav,
 .is_header_semitransparent .navbar-default.transparent-nav,

@@ -20,9 +20,9 @@ jQuery(document).ready(function () {
 
     if (typeof (web3) === 'undefined') {
         swal({
-            title: 'Warning',
+            title: 'Error',
             text: "Unable to find web3. Please run MetaMask or TrustWallet App (or something else that injects web3",
-            type: 'Warning',
+            type: 'error',
             buttonsStyling: false,
             confirmButtonClass: 'btn btn-info'
         })
@@ -65,9 +65,9 @@ jQuery(document).ready(function () {
         function buyshit() {
             if (typeof (web3) === 'undefined') {
                 swal({
-                    title: 'Warning',
+                    title: 'Error',
                     text: "Unable to find web3. Please run MetaMask or TrustWallet App (or something else that injects web3",
-                    type: 'Warning',
+                    type: 'error',
                     buttonsStyling: false,
                     confirmButtonClass: 'btn btn-info'
                 })
@@ -75,11 +75,10 @@ jQuery(document).ready(function () {
             else {
                 console.log(Number(web3.version.network))
                 if (Number(web3.version.network) != 1) {
-                    
                     swal({
-                        title: 'Warning',
+                        title: 'Error',
                         text: "Wrong network detected. Please switch to the Ethereum Main Network",
-                        type: 'Warning',
+                        type: 'error',
                         buttonsStyling: false,
                         confirmButtonClass: 'btn btn-info'
                     })
@@ -129,9 +128,9 @@ jQuery(document).ready(function () {
         function viewSaldo() {
             if (web3.version.network != 1) {
                 swal({
-                    title: 'Warning',
+                    title: 'Error',
                     text: "Wrong network detected. Please switch to the Ethereum Main Network",
-                    type: 'Warning',
+                    type: 'error',
                     buttonsStyling: false,
                     confirmButtonClass: 'btn btn-info'
                 })
@@ -217,19 +216,20 @@ jQuery(document).ready(function () {
                         else
                           
                             swal({
-                                title: 'Warning',
+                                title: 'Error',
                                 text: err.message,
-                                type: 'Warning',
+                                type: 'error',
                                 buttonsStyling: false,
                                 confirmButtonClass: 'btn btn-info'
                             })
                     
                     });
                 } else {
+                   
                     swal({
-                        title: 'Warning',
+                        title: 'Error',
                         text: "The minimum purchase is 20 PCKF",
-                        type: 'Warning',
+                        type: 'error',
                         buttonsStyling: false,
                         confirmButtonClass: 'btn btn-info'
                     })
@@ -256,9 +256,9 @@ jQuery(document).ready(function () {
                     error: function (xhr, status) {
                         if (xhr.responseJSON.message.indexOf("ER_DUP_ENTRY")) {
                             swal({
-                                title: 'Warning',
+                                title: 'Error',
                                 text: "You are already a registered user",
-                                type: 'Warning',
+                                type: 'error',
                                 buttonsStyling: false,
                                 confirmButtonClass: 'btn btn-info'
                             })
