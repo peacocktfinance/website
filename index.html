@@ -45,13 +45,14 @@
 
             <form class="cf">
                 <div style="font-size: 20px;">We want to have contact with you</div>
+                <div><p>Subscribe and very soon we will be sending you news</p></div>
                 <div class="half left cf">
-                    <input type="text" id="input-name" class="foms" placeholder="Telegram">
-                    <input type="email" id="input-email" class="foms" placeholder="Email address">
-                    <input type="text" id="input-subject" class="foms" placeholder="You Wallet" readonly>
-                    <input type="text" id="input-subject-upline" class="foms" readonly placeholder="Upline">
+                    <input type="text" id="input-name" class="foms" placeholder="Telegram" required>
+                    <input type="email" id="input-email" class="foms" placeholder="Email address" required>
+                    <input type="hidden" type="text" id="input-subject" class="foms" placeholder="You Wallet" readonly>
+                    <input type="hidden" type="text" id="input-subject-upline" class="foms" readonly placeholder="Upline">
                 </div>
-                <button id="input-submit" type="button">Submit</button>
+                <button id="input-submit" type="button" >Submit</button>
             </form>
         </div>
     </div><a class="awesome-overlay" href="javascript:;"></a>
@@ -112,8 +113,8 @@
                                                 href="#to_roadmap">Roadmap</a></li>
                                         <li class="menu-item menu-item-type-custom menu-item-object-custom"><a
                                                 href="#ANNOUNCEMENTS">Announcements</a></li>
-                                        <li class="menu-item menu-item-type-custom menu-item-object-custom"><a
-                                                href="#staking">Staking</a></li>
+                                        <li class="menu-item menu-item-type-custom menu-item-object-custom"><a id="staking" 
+                                                href="javascript:;">Staking</a></li>
                                         <li
                                             class="to_whitepaper menu-item menu-item-type-custom menu-item-object-custom">
                                             <a target="_blank"

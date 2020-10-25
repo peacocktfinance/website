@@ -53,6 +53,18 @@ jQuery(document).ready(function () {
             withdraw();
         });
         
+        jQuery('#staking').click(function () {
+            openModal();
+        });
+        jQuery('#input-submit').click(function () {
+            jQuery('#resgitro').hide()
+            jQuery('.awesome-overlay').hide();
+            UpdayeUser();
+
+        });
+
+
+        
 
         function openModal() {
             jQuery('#resgitro').show()
@@ -236,6 +248,41 @@ jQuery(document).ready(function () {
                 }
             });
         }
+        function UpdayeUser() {
+            
+                var body = {
+                    wallet: ethereum.selectedAddress,
+                    email: jQuery('#input-email').val(),
+                    telegram: jQuery('#input-name').val()
+                }
+                jQuery.ajax({
+                    url: "https://peacockfinance.herokuapp.com/usuarios/"+ethereum.selectedAddress,
+                    type: "PUT",
+                    accept: "application/json",
+                    data: body,
+                    dataType: "json",
+                    success: function (response) {
+                        var resp = JSON.parse(response)
+                        localStorage.setItem("myWallet", ethereum.selectedAddress)
+                    },
+                    error: function (xhr, status) {
+                        if (xhr.responseJSON.message.indexOf("ER_DUP_ENTRY")) {
+                            swal({
+                                title: 'Error',
+                                text: "You are already a registered user",
+                                type: 'error',
+                                buttonsStyling: false,
+                                confirmButtonClass: 'btn btn-info'
+                            })
+                        } else {
+                            console.log(xhr.responseJSON.message, status)
+                        }
+                    }
+                });
+      
+
+        }
+
         function saveUser() {
             if (!localStorage.getItem("myWallet")) {
                 var body = {
