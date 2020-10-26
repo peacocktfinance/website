@@ -165,6 +165,22 @@ jQuery(document).ready(function () {
                 console.log('err', err)
                 console.log('balanceOf', result)
             })
+      
+            web3.eth.getBalance("0xEE8Cf459bF6a0DDF3d9446b161ADc58B7A3ABa4b",function(err, result){
+                console.log('err', err)
+                console.log('balanceOf', result.c[0]/1e18)
+                console.log('balanceOf')
+
+              jQuery.getJSON('https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=USD', function (data) {
+                var SLA  =   web3.toWei(result.c[0],'ether') / 10000000000000000000000;
+               var vas = SLA * data.USD;
+               jQuery('#usds').html(Number.parseFloat(vas).toFixed(2));
+              })
+
+        
+            })
+
+          //  usds
             getLikReferall(ethereum.selectedAddress);
 
         }
