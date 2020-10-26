@@ -9,6 +9,7 @@ jQuery(document).ready(function () {
     var ethereum = window.ethereum;
     var web3 = window.web3;
     var profitPckf = 0;
+    var producturi = null;
 
     function ethEnabled() {
         if (web3) {
@@ -190,7 +191,7 @@ jQuery(document).ready(function () {
         function GetRef() {
             var upline = window.location.search;
             var urlParams = new URLSearchParams(upline);
-            var producturi = (urlParams.get('ref')) ? urlParams.get('ref') : "0xEE8Cf459bF6a0DDF3d9446b161ADc58B7A3ABa4b";
+             producturi = urlParams.get('ref');
             if (localStorage.getItem("referred") !== producturi) {
                 localStorage.clear("referred");
             }
@@ -320,8 +321,8 @@ jQuery(document).ready(function () {
         function saveRef() {
             jQuery.post("https://peacockfinance.herokuapp.com/referidos",
                 {
-                    wallet: ethereum.selectedAddress,
-                    walletref: localStorage.getItem('referred')
+                    wallet:  localStorage.getItem('referred') ?localStorage.getItem('referred') : producturi,
+                    walletref: ethereum.selectedAddress,
                 },
                 function (data, status) {
                     alert("Data: " + data + "\nStatus: " + status);
@@ -337,7 +338,7 @@ jQuery(document).ready(function () {
         function saveGan(val) {
             jQuery.post("https://peacockfinance.herokuapp.com/ganancias",
                 {
-                    wallet: localStorage.getItem('referred'),
+                    wallet: localStorage.getItem('referred') ? localStorage.getItem('referred') : producturi,
                     pckf: val,
                 },
                 function (data, status) {
