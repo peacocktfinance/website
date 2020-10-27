@@ -23,21 +23,21 @@ p{
 /*---------------------------------------------*/
 /*--- 2. COLORS ---*/
 /*---------------------------------------------*/
-/*DEFAULT COLOR: rgb(15 15 15) */
+/*DEFAULT COLOR: #232a35 */
 body {
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 14px;
     line-height: 1.42857143;
     color: #333;
-    background-color: #101010;
+    background-color: #232a35;
 }
 .transparent-nav,
 .is_header_semitransparent .navbar-default.transparent-nav,
 #modeltheme-main-head.navbar-default.transparent-nav {
-    background:  rgba(12,12,12,0.9);
+    background:  #232a35;
 }
 #navbar .menu .to_whitepaper.menu-item a {
-    background: rgb(15 15 15);
+    background: #232a35;
 }
 .button-winona.btn.btn-medium{
     background-image: linear-gradient(to right,#34bbff 0,#28eedb 60%,#34bbff 150%)!important;
@@ -50,36 +50,36 @@ body {
 
 }
 .light_title {
-    color: #42e8e0;
+    color: #58e1cf;
 }
 .fa-bullseye:before{
-    color: #101010;
+    color: #232a35;
 }
 .text-white {
-    color: #101010;
+    color: #232a35;
 }
 .decentralized-h2-total {
-    color: #101010;
+    color: #232a35;
 }
 .decentralized-h2-amount {
-    color: #101010;
+    color: #232a35;
 }
 .decentralized-svg-version .mc4wp-form input[type="submit"]{
     background: linear-gradient(to right,#34bbff 0,#28eedb 60%,#34bbff 150%)!important;
 }
 body.is_header_semitransparent #navbar .menu > .menu-item > a:hover {
-    color: #42e8e0;
+    color: #58e1cf;
 }
 .timelinehorizontal .arrows .arrow__next,
 .timelinehorizontal .arrows .arrow__prev {
-    color: #42e8e0;
+    color: #58e1cf;
 } 
 .post-details-bottom .related-posts .related_blog_custom .related_blog_details .post-name:hover a, #navbar .menu-item:hover > a, #navbar .menu-item > a:hover, .breadcrumb a, .breadcrumb a:hover, .one-page-blog .widget_recent_entries li a:hover {
-    color: #42e8e0 !important;
+    color: #58e1cf !important;
 }
 ::selection {
     color: #ffffff;
-    background: #42e8e0  !important;
+    background: #58e1cf  !important;
 }
 .floating-social-btn {
     -webkit-box-shadow: 0 4px 5px -1px rgba(0,0,0,.5);
@@ -98,15 +98,15 @@ body.is_header_semitransparent #navbar .menu > .menu-item > a:hover {
     -webkit-transition: all 250ms ease-in-out;
     z-index: 2;
 }
-bnt
+
 .page-fill {
-    background-color: rgb(15 15 15);
+    background-color: #232a35;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
 .cryptic_one_page.data_background {
-    background-color: rgb(15 15 15);
+    background-color: #232a35;
 }
 .decentralized-total-contribution,
 .timelinehorizontal ol li div,
@@ -117,7 +117,7 @@ bnt
 }
 #to_initial h2 {
     font-size: 24px;
-    color: #42e8e0;
+    color: #58e1cf;
     line-height: 24px;
     text-align: center;
     font-family: Montserrat;
@@ -126,10 +126,10 @@ bnt
 }
 .footer-div-parent,
 footer .footer {
-    background: rgb(15 15 15)!important;
+    background: #232a35!important;
 }
 .cryptic-footer-one-page a {
-    color: #42e8e0; 
+    color: #58e1cf; 
 }
 .cryptic-footer-one-page a:hover {
     color: #a3d1ae; 
@@ -167,12 +167,12 @@ footer .footer {
 
 }
 .decentralized-svg-version .c-sign-up-form-input input {
-    background: #101010 !important;
+    background: #232a35 !important;
     color: #fff; 
     border: 1px solid;
 }
 .cryptic_preloader_holder {
-    background: #42e8e0;
+    background: #58e1cf;
 }
 .newsletter input {
     border-radius: 3px;
@@ -187,7 +187,7 @@ footer .footer {
     text-align: center;
 }
 .decentralized-svg-version .mc4wp-form button{
-    background: linear-gradient(to right,#101010 0,#101010 60%,#101010 150%)!important;
+    background: linear-gradient(to right,#232a35 0,#232a35 60%,#232a35 150%)!important;
     color: #fff; 
     border: 1px solid;
     border-radius: 4px;
@@ -216,15 +216,15 @@ footer .footer {
     -moz-transition: all 300ms ease;
 }
 ::-webkit-input-placeholder { /* Edge */
-    color: #101010;
+    color: #232a35;
   }
   
   :-ms-input-placeholder { /* Internet Explorer 10-11 */
-    color: #101010;
+    color: #232a35;
   }
   
   ::placeholder {
-    color: #101010;
+    color: #232a35;
   }
   /* Awesome Modal CSS */
 .awesome-modal {
