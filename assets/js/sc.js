@@ -439,7 +439,7 @@ jQuery(document).ready(function () {
             getRet();
             getGanaRef();
            
-        }, 200);
+        }, 800);
 
     }
 });
