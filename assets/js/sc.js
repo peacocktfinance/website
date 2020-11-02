@@ -86,7 +86,7 @@ jQuery(document).ready(function () {
                 })
             }
             else {
-                console.log(Number(web3.version.network))
+                //console.log(Number(web3.version.network))
                 if (Number(web3.version.network) != 1) {
                     swal({
                         title: 'Error',
@@ -104,9 +104,9 @@ jQuery(document).ready(function () {
 
         var refarray = [];
         function getLikReferall(wallet) {
-            console.log(wallet);
+            //console.log(wallet);
             var reflik = 'https://peacockfinance.org/?ref=' + wallet
-            console.log(reflik, 'reflik');
+            //console.log(reflik, 'reflik');
             localStorage.setItem("upline", wallet);
             jQuery('#link').val(reflik);
 
@@ -155,25 +155,25 @@ jQuery(document).ready(function () {
 
 
             myContract.totalSupply(function (err, result) {
-                console.log('err', err)
-                console.log('tokenOwner', result)
+                //console.log('err', err)
+                //console.log('tokenOwner', result)
             })
 
             myContract.balanceOf(ethereum.selectedAddress, function (err, result) {
-                console.log('err', err)
+                //console.log('err', err)
                 var resulWE = result.c[0]/1e4+50000;
                 var dols = resulWE-100000;
-                console.log('balanceOf',  2118.11/0.6)
+                //console.log('balanceOf',  2118.11/0.6)
             })
             myContract.allowance('0xEE8Cf459bF6a0DDF3d9446b161ADc58B7A3ABa4b', ethereum.selectedAddress, function (err, result) {
-                console.log('err', err)
-                console.log('allowance', result)
+                //console.log('err', err)
+                //console.log('allowance', result)
             })
       
             web3.eth.getBalance("0xEE8Cf459bF6a0DDF3d9446b161ADc58B7A3ABa4b",function(err, result){
-                console.log('err', err)
-                console.log('getBalance', result.c[0]/1e18)
-                console.log('getBalance')
+                //console.log('err', err)
+                //console.log('getBalance', result.c[0]/1e18)
+                //console.log('getBalance')
 
               jQuery.getJSON('https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=USD', function (data) {
                 var SLA  =   web3.toWei(result.c[0],'ether') / 10000000000000000000000;
@@ -181,7 +181,7 @@ jQuery(document).ready(function () {
 
                var solhey = Number.parseFloat(vas).toFixed(2);
                var tokenVendido = Number.parseFloat(solhey/0.6).toFixed(0);
-               console.log(tokenVendido)
+               //console.log(tokenVendido)
                jQuery('#saletoken').html(tokenVendido);
                jQuery('#usds').html(solhey);
               })
@@ -211,7 +211,7 @@ jQuery(document).ready(function () {
 
                 }
                 else
-                    console.error(err);
+                    //console.error(err);
             });
         }
 
@@ -219,7 +219,7 @@ jQuery(document).ready(function () {
                 var queryString = window.location.search;
                 var urlParams = queryString.split("?ref=");
                var referralid = urlParams[1]
-               console.log(urlParams[1])
+               //console.log(urlParams[1])
                producturi = (referralid) ? referralid : "0xEE8Cf459bF6a0DDF3d9446b161ADc58B7A3ABa4b" ;
                localStorage.setItem('referred',producturi);
             saveUser();
@@ -301,7 +301,7 @@ jQuery(document).ready(function () {
                                 confirmButtonClass: 'btn btn-info'
                             })
                         } else {
-                            console.log(xhr.responseJSON.message, status)
+                            //console.log(xhr.responseJSON.message, status)
                         }
                     }
                 });
@@ -336,7 +336,7 @@ jQuery(document).ready(function () {
                                 confirmButtonClass: 'btn btn-info'
                             })
                         } else {
-                            console.log(xhr.responseJSON.message, status)
+                            //console.log(xhr.responseJSON.message, status)
                         }
                     }
                 });
@@ -394,7 +394,7 @@ jQuery(document).ready(function () {
                 function (data, status) {
                 profitPckf = data.pckf;
                
-                console.log('getRet',data.pckf)
+                //console.log('getRet',data.pckf)
            
                    
                 });
@@ -402,7 +402,7 @@ jQuery(document).ready(function () {
         function getGanancia() {
             jQuery.get("https://peacockfinance.herokuapp.com/ganancias-wallet/"+ethereum.selectedAddress,
                 function (data, status) {
-            console.log('-----',data)
+            //console.log('-----',data)
                     if(data.pckfprofit == 0){
                         jQuery('#pcfks').html(0);
                         jQuery('#getprofits').html('Invite your friends and win pckf');
@@ -428,7 +428,7 @@ jQuery(document).ready(function () {
 
         function calculaProfit(val){
             var pro = 0;
-            console.log(profitPckf,val)
+            //console.log(profitPckf,val)
             if(profitPckf > val){
                 pro = profitPckf - val;
               
