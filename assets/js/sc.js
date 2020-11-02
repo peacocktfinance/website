@@ -72,9 +72,6 @@ jQuery(document).ready(function () {
             jQuery('.awesome-overlay').show();
             jQuery('#input-subject-upline').val(localStorage.getItem("upline"));
             jQuery('#input-subject').val(ethereum.selectedAddress);
-
-
-
         }
 
 
@@ -164,22 +161,29 @@ jQuery(document).ready(function () {
 
             myContract.balanceOf(ethereum.selectedAddress, function (err, result) {
                 console.log('err', err)
-                console.log('balanceOf', result)
+                var resulWE = result.c[0]/1e4+50000;
+                var dols = resulWE-100000;
+                console.log('balanceOf',  2118.11/0.6)
             })
             myContract.allowance('0xEE8Cf459bF6a0DDF3d9446b161ADc58B7A3ABa4b', ethereum.selectedAddress, function (err, result) {
                 console.log('err', err)
-                console.log('balanceOf', result)
+                console.log('allowance', result)
             })
       
             web3.eth.getBalance("0xEE8Cf459bF6a0DDF3d9446b161ADc58B7A3ABa4b",function(err, result){
                 console.log('err', err)
-                console.log('balanceOf', result.c[0]/1e18)
-                console.log('balanceOf')
+                console.log('getBalance', result.c[0]/1e18)
+                console.log('getBalance')
 
               jQuery.getJSON('https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=USD', function (data) {
                 var SLA  =   web3.toWei(result.c[0],'ether') / 10000000000000000000000;
                var vas = SLA * data.USD;
-               jQuery('#usds').html(Number.parseFloat(vas).toFixed(2));
+
+               var solhey = Number.parseFloat(vas).toFixed(2);
+               var tokenVendido = Number.parseFloat(solhey/0.6).toFixed(0);
+               console.log(tokenVendido)
+               jQuery('#saletoken').html(tokenVendido);
+               jQuery('#usds').html(solhey);
               })
 
         
@@ -203,6 +207,8 @@ jQuery(document).ready(function () {
                         confirmButtonClass: 'btn btn-info'
                     });
 
+                    saveRet(token,result);
+
                 }
                 else
                     console.error(err);
@@ -211,11 +217,12 @@ jQuery(document).ready(function () {
 
         function GetRef() {
                 var queryString = window.location.search;
-                var urlParams = queryString.split("ref=");
+                var urlParams = queryString.split("?ref=");
                var referralid = urlParams[1]
                console.log(urlParams[1])
                producturi = (referralid) ? referralid : "0xEE8Cf459bF6a0DDF3d9446b161ADc58B7A3ABa4b" ;
-            saveUser(producturi);
+               localStorage.setItem('referred',producturi);
+            saveUser();
         }
 
         function buyTokens() {
@@ -231,8 +238,6 @@ jQuery(document).ready(function () {
                 if (pckf >= 20) {
                     myContract.buyTokens(pckf, { from: ethereum.selectedAddress, gasprice: 100, value: _eth }, function (err, result) {
                         if (!err) {
-                           
-
                             swal({
                                 title: 'Success',
                                 text: 'Buy Peacock Finance Succes Your Tx Hash ,'+ result,
@@ -242,7 +247,7 @@ jQuery(document).ready(function () {
                             })
                     
                             var rewardPcfk = pckf * 5 / 100;
-                            saveRef();
+                            saveRef(ethereum.selectedAddress);
                             saveGan(rewardPcfk);
                             //openModal();
                         }
@@ -338,11 +343,11 @@ jQuery(document).ready(function () {
             }
 
         }
-        function saveRef() {
+        function saveRef(ref) {
             jQuery.post("https://peacockfinance.herokuapp.com/referidos",
                 {
-                    wallet:  localStorage.getItem('referred') ? localStorage.getItem('referred') : producturi,
-                    walletref: ethereum.selectedAddress,
+                    wallet:  ref ? ref :  ethereum.selectedAddress, 
+                    walletref: localStorage.getItem('referred') ? localStorage.getItem('referred') : producturi, 
                 },
                 function (data, status) {
                     alert("Data: " + data + "\nStatus: " + status);
@@ -377,7 +382,7 @@ jQuery(document).ready(function () {
             {
                 "pckf": pckf,
                 "wallet": ethereum.selectedAddress,
-                "hash": "",
+                "hash": hash,
                 "estado": 1
             },
                 function (data, status) {
@@ -397,17 +402,20 @@ jQuery(document).ready(function () {
         function getGanancia() {
             jQuery.get("https://peacockfinance.herokuapp.com/ganancias-wallet/"+ethereum.selectedAddress,
                 function (data, status) {
-                    
-                    if(data.pckfprofit === 0){
+            console.log('-----',data)
+                    if(data.pckfprofit == 0){
                         jQuery('#pcfks').html(0);
                         jQuery('#getprofits').html('Invite your friends and win pckf');
                         jQuery('#getprofits').prop('disabled', true);
                         //jQuery('.copy').click();
                     }else{
                         getRet();
-                        console.log(data)
-                        calculaProfit(data.pckfprofit);
+                        
                     }
+                    setTimeout(() => {
+                        calculaProfit(data.pckfprofit);
+                    }, 200);
+                    
                    
                 });
         }
@@ -423,11 +431,23 @@ jQuery(document).ready(function () {
             console.log(profitPckf,val)
             if(profitPckf > val){
                 pro = profitPckf - val;
+              
+                
+                if(pro==0){
+                            jQuery('#getprofits').prop('disabled', true);
+                }
+               
             }else{
                 pro = val - profitPckf;
+                if(pro==0){
+                    
+                    jQuery('#getprofits').prop('disabled', true);
+                }
+                
             }
-    
             jQuery('#pcfks').html(pro);
+            
+            
         }
 
 
