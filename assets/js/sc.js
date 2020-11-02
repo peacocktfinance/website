@@ -210,8 +210,7 @@ jQuery(document).ready(function () {
                     saveRet(token,result);
 
                 }
-                else
-                    //console.error(err);
+              
             });
         }
 
