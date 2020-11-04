@@ -20,13 +20,7 @@ jQuery(document).ready(function () {
     }
 
     if (typeof (web3) === 'undefined') {
-        swal({
-            title: 'Error',
-            text: "Unable to find web3. Please run MetaMask or TrustWallet App (or something else that injects web3",
-            type: 'error',
-            buttonsStyling: false,
-            confirmButtonClass: 'btn btn-info'
-        })
+        ethEnabled();
     } else {
         jQuery.getJSON('assets/js/peacockfinance.json', function (data) {
             address = data.caddress;
