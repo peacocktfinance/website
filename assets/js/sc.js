@@ -458,7 +458,7 @@ jQuery(document).ready(function () {
             getRet();
             getGanaRef();
            
-        }, 800);
+        }, 1800);
 
     }
 });
